@@ -35,7 +35,7 @@ colcon build --symlink-install
 3. Update Source
 ```
 source ~/.bashrc
-``
+```
 
 4. Run ROS2
 ```
