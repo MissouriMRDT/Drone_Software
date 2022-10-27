@@ -6,6 +6,7 @@ on:
       - dev
       - release/testing
       - release/competition
+  workflow_dispatch:
 
 jobs:
   build:
