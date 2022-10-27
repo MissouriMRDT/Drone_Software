@@ -25,6 +25,17 @@ jobs:
           pip install pytest
           pip install pytest-cov
 
+      - name: Install Colcon
+        run: |
+          pip install colcon-ros
+          sudo apt install python3-colcon-common-extensions
+
+      - name: Build
+        run: colcon build
+      
+      - name: Update Source
+        run: source ~/.bashrc
+
       - name: Run Tests
         run: |
           cd src/autonomy
