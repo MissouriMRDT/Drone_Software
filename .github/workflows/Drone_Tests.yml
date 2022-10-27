@@ -16,12 +16,6 @@ jobs:
       - name: Fetch Repo
         uses: actions/checkout@v2
 
-      - name: Build
-        run: colcon build
-      
-      - name: Update Source
-        run: source ~/.bashrc
-
       - name: Run Tests
         run: |
           cd src/autonomy
