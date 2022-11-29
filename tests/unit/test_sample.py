@@ -1,10 +1,8 @@
-import unittest
+import pytest
 
+class TestClassDemoInstance:
+    value = 0
 
-class MyTestCase(unittest.TestCase):
-    def test_something(self):
-        self.assertEqual(True, False)  # add assertion here
-
-
-if __name__ == '__main__':
-    unittest.main()
+    def test_one(self):
+        self.value = 1
+        assert self.value == 1
