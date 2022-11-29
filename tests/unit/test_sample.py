@@ -1,8 +1,8 @@
-import pytest
+def func(x):
+    return x + 1
 
-class TestClassDemoInstance:
-    value = 0
+def test_answer():
+    assert func(3) == 5
 
-    def test_one(self):
-        self.value = 1
-        assert self.value == 1
+def test_answer2():
+    assert func(3) == 4
