@@ -14,7 +14,7 @@ import interfaces
 
 class StateMachine(object):
     """
-    The state machine "handler" which will deal with switching between various 
+    The state machine "handler" which will deal with switching between various
     states
     """
 
@@ -29,12 +29,11 @@ class StateMachine(object):
 
         # Add callbacks for autonomy controls
         core.rovecomm_node.set_callback(
-            core.manifest['Autonomy']['Commands']['StartAutonomy']['dataId'], 
+            core.manifest['Autonomy']['Commands']['StartAutonomy']['dataId'],
             self.enable)
         core.rovecomm_node.set_callback(
-            core.manifest['Autonomy']['Commands']['DisableAutonomy']['dataId'], 
-            self.disable
-        )
+            core.manifest['Autonomy']['Commands']['DisableAutonomy']['dataId'],
+            self.disable)
 
     def enable(self, packet):
         self.enable_flag = True

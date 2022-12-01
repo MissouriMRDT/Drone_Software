@@ -15,7 +15,7 @@ from core.states.approaching_marker import ApproachingMarker
 from core.states.approaching_gate import ApproachingGate
 from enum import Enum
 
-# State Machine handler, takes care of running states and enabling/disabling 
+# State Machine handler, takes care of running states and enabling/disabling
 # autonomy
 state_machine: StateMachine
 
