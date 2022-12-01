@@ -15,10 +15,10 @@ from core.states import DroneState
 class Navigating(DroneState):
     """
     The goal of this state is to navigate to the GPS coordinates provided by base
-    station in succession, the last of which is the coordinate provided by the judges
-    for that leg of the task. Coordinates before the last are simply the operators in
-    base station’s best guess of the best path for the drone due to terrain identified
-    on RED’s map.
+    station in succession, the last of which is the coordinate provided by the
+    judges for that leg of the task. Coordinates before the last are simply the
+    operators in base station’s best guess of the best path for the drone due to
+    terrain identified on RED’s map.
     """
 
     def start(self):
@@ -66,7 +66,7 @@ class Navigating(DroneState):
             state = core.states.Grounded()
 
         else:
-            self.logger.error(f"Unexpected event {event} for state {self}")
+            self.logger.error(f'Unexpected event {event} for state {self}')
             state = core.states.Idle()
 
         # Call exit() if we are not staying the same state

@@ -15,7 +15,8 @@ from core.states import DroneState
 
 class ApproachingMarker(DroneState):
     """
-    Within approaching marker, the drone explicitly follows the spotted marker until it reaches an acceptable distance from the drone, or loses sight of it.
+    Within approaching marker, the drone explicitly follows the spotted marker
+    until it reaches an acceptable distance from the drone, or loses sight of it.
     """
 
     def start(self):
@@ -58,7 +59,7 @@ class ApproachingMarker(DroneState):
             state = core.states.Grounded()
 
         else:
-            self.logger.error(f"Unexpected event {event} for state {self}")
+            self.logger.error(f'Unexpected event {event} for state {self}')
             # Should try to land before entering Grounded, rover just entered Idle
             state = core.states.Grounded()
 

@@ -15,8 +15,9 @@ from core.states import DroneState
 
 class SearchPattern(DroneState):
     """
-    The searching state’s goal is to fly the drone in an ever expanding Archimedean spiral, searching for the AR Tag.
-    The spiral type was chosen because of it’s fixed distance between each rotation’s path.
+    The searching state’s goal is to fly the drone in an ever expanding Archimedean
+    spiral, searching for the AR Tag. The spiral type was chosen because of its
+    fixed distance between each rotation’s path.
     """
 
     def start(self):
@@ -61,7 +62,7 @@ class SearchPattern(DroneState):
             state = core.states.Grounded()
 
         else:
-            self.logger.error(f"Unexpected event {event} for state {self}")
+            self.logger.error(f'Unexpected event {event} for state {self}')
             # Should try to land before entering Grounded, rover just entered Idle
             state = core.states.Grounded()
 

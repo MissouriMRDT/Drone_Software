@@ -15,7 +15,8 @@ from core.states.approaching_marker import ApproachingMarker
 from core.states.approaching_gate import ApproachingGate
 from enum import Enum
 
-# State Machine handler, takes care of running states and enabling/disabling autonomy
+# State Machine handler, takes care of running states and enabling/disabling 
+# autonomy
 state_machine: StateMachine
 
 
@@ -35,9 +36,9 @@ class AutonomyEvents(Enum):
 
 
 StateMapping = {
-    "Grounded": 0,
-    "Navigating": 1,
-    "SearchPattern": 2,
-    "ApproachingMarker": 3,
-    "ApproachingGate": 4,
+    'Grounded': 0,
+    'Navigating': 1,
+    'SearchPattern': 2,
+    'ApproachingMarker': 3,
+    'ApproachingGate': 4,
 }
