@@ -16,4 +16,5 @@ jobs:
       - name: flake8 Lint
         uses: py-actions/flake8@v2
         with:
-          plugins: "flake8-bugbear flake8-warnings flake8-class-attributes-order flake8-commas flake8-comprehensions flake8-literal flake8-multiline-containers flake8-newspaper-style flake8-quotes flake8-return flake8-functions flake8-pytest-style flake8-pytest dlint"
+          plugins: "flake8-bugbear flake8-warnings flake8-class-attributes-order flake8-commas flake8-comprehensions flake8-literal flake8-multiline-containers flake8-quotes flake8-return flake8-functions flake8-pytest-style flake8-pytest dlint"
+          max-line-length: "127"
