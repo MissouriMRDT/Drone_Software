@@ -3,7 +3,7 @@
 # grounded.py
 #
 # Created on November 29, 2022
-# Updated on November 29, 2022
+# Updated on December 1, 2022
 #
 
 import core
@@ -28,10 +28,10 @@ class Grounded(DroneState):
         state: DroneState = None
 
         # Maybe add NEW_COORDS as event, as in state machine diagram:
-        # if event == core.AutonomyEvents.NEW_COORDS:
-        #     state = core.states.Navigating()
+        if event == core.AutonomyEvents.NEW_COORDS:
+             state = core.states.Navigating()
 
-        if event == core.AutonomyEvents.START:
+        elif event == core.AutonomyEvents.START:
             state = core.states.Navigating()
 
         elif event == core.AutonomyEvents.ABORT:

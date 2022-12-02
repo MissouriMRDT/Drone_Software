@@ -3,7 +3,7 @@
 # search_pattern.py
 #
 # Created on November 29, 2022
-# Updated on November 29, 2022
+# Updated on December 1, 2022
 #
 
 import core
@@ -55,6 +55,7 @@ class SearchPattern(DroneState):
 
         elif event == core.AutonomyEvents.SEARCH_FAILED:
             # Should try to land before entering Grounded, rover just entered Idle
+            # Considering entering Navigating instead of Grounded
             state = core.states.Grounded()
 
         elif event == core.AutonomyEvents.ABORT:

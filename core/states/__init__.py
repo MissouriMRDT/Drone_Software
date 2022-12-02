@@ -3,7 +3,7 @@
 # __init__.py
 #
 # Created on November 29, 2022
-# Updated on November 29, 2022
+# Updated on December 1, 2022
 #
 
 from core.states.state import DroneState
@@ -31,8 +31,10 @@ class AutonomyEvents(Enum):
     ALL_MARKERS_REACHED = 8
     ABORT = 9
     RESTART = 10
-    NO_WAYPOINT = 11
-    NEW_WAYPOINT = 12
+    #NO_WAYPOINT = 11
+    NO_COORDS = 11
+    #NEW_WAYPOINT = 12
+    NEW_COORDS = 12
 
 
 StateMapping = {

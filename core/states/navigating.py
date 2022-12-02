@@ -3,7 +3,7 @@
 # navigating.py
 #
 # Created on November 29, 2022
-# Updated on November 29, 2022
+# Updated on December 1, 2022
 #
 
 import core
@@ -44,7 +44,7 @@ class Navigating(DroneState):
         """
         state: DroneState = None
 
-        if event == core.AutonomyEvents.NO_WAYPOINT:
+        if event == core.AutonomyEvents.NO_COORDS:
             # Should try to land before entering Grounded, rover just entered Idle
             state = core.states.Grounded()
 
@@ -55,7 +55,9 @@ class Navigating(DroneState):
         elif event == core.AutonomyEvents.REACHED_GPS_COORDINATE:
             state = core.states.SearchPattern()
 
-        elif event == core.AutonomyEvents.NEW_WAYPOINT:
+        #elif event == core.AutonomyEvents.NEW_WAYPOINT:
+        #    state = self
+        elif event == core.AutonomyEvents.NEW_COORDS:
             state = self
 
         elif event == core.AutonomyEvents.START:
