@@ -81,4 +81,56 @@ class SearchPattern(DroneState):
         :return: DroneState
         """
 
+        """
+        if altitude != desired_altitude:
+            # Change the power of whatever keeps the drone in the air until altitude is correct
+            # Maybe use accelerometer to see how quickly drone is changing speed, adjust accordingly to stay within reasonable speed
+
+        else: # If at correct altitude
+            gps_data = core.waypoint_handler.get_waypoint()
+            goal, start, leg_type = gps_data.data()
+            current = interfaces.nav_board.location()
+
+            # Check to see if gate or marker detected
+            # If so, immediately stop all movement to ensure we don't lose sight of the AR tag(s) 
+            if core.vision.ar_tag_detector.is_gate() and leg_type == "GATE":
+                # Stop any horizontal movement, stay at same altitude
+                interfaces.drive_board.stop() # Make sure drone doesn't crash
+            
+                # Sleep for a brief second
+                await asyncio.sleep(0.1)
+
+                return self.onevent(core.AutonomyEvents.GATE_SEEN)
+                # Go to ApproachingGate
+
+            elif core.vision.ar_tag_detector.is_marker() and leg_type == "MARKER":
+                # Stop any horizontal movement, stay at same altitude
+                interfaces.drive_board.stop() # Make sure drone doesn't crash
+            
+                # Sleep for a brief second
+                await asyncio.sleep(0.1)
+
+                return self.onevent(core.AutonomyEvents.MARKER_SEEN)
+                # Go to ApproachingMarker
+
+            if algorithms.gps_navigate.get_approach_status(goal, current, start) != core.ApproachState.APPROACHING:
+                # If approach status changed, if no longer approaching due to proximity
+                # If next point in search pattern has been reached
+            
+                # Stop any horizontal movement, stay at same altitude
+                interfaces.drive_board.stop() # Make sure drone doesn't crash
+                # Sleep for a brief second before moving to the next point, allows for AR Tag to be picked up if present
+                await asyncio.sleep(0.1)
+
+                goal = algorithms.marker_search.calculate_next_coordinate(start, goal)
+                core.waypoint_handler.set_goal(goal)
+                # Sets next goal in search pattern, regardless of which search pattern algorithm is used
+
+            left, right = algorithms.gps_navigate.calculate_move(goal, current, start, core.MAX_DRIVE_POWER)
+            interfaces.drive_board.send_drive(left, right)
+            # Continue moving towards next point in search pattern
+
         return self
+        # Stay in search pattern until search fails or gate/marker seen
+        """
+        

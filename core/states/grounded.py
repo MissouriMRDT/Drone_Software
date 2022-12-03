@@ -55,4 +55,18 @@ class Grounded(DroneState):
         # Send no commands to drive board, the watchdog will trigger and stop the drone
         # from flying anyway The only way to get out of this is through the state
         # machine enable(), triggered by RoveComm
+
+        """
+        # The run function for Idle is empty - Grounded should try to land before the drone turns off
+                
+        # Should create landing functionality similar to the below
+        if altitude > 0:
+            # Reduce the power of whatever keeps the drone in the air until altitude is 0
+            # Maybe look for obstacles that could impair landing and move elsewhere?
+            # Maybe use accelerometer to see how quickly drone is falling, adjust accordingly to stay below max speed
+            # Should have max falling speed to prevent damage to drone
+        
+        # If altitude <= 0, drone does nothing because it is not receiving commands, stay in Grounded
+
         return self
+        """

@@ -85,4 +85,53 @@ class Navigating(DroneState):
         :return: DroneState
         """
 
+        """
+        # Grounded only goes to Navigating and only Grounded goes to Navigating, so it can be assumed that the drone is on the ground when navigating starts
+        gps_data = core.waypoint_handler.get_waypoint()
+
+        # If the gps_data is none, there were no waypoint coordinates to be grabbed,
+        # so log that and return
+        if gps_data is None:
+            return self.on_event(core.AutonomyEvents.NO_COORDS)
+            # If no waypoint coordinates to grab, go to 
+
+        # Anything after the above statement is assumed to have gps data
+        if altitude <= desired_altitude:
+            # Change the power of whatever keeps the drone in the air until altitude is correct
+            # Maybe use accelerometer to see how quickly drone is changing speed, adjust accordingly to stay within reasonable speed
+
+        else: # If at correct altitude
+            goal, start, leg_type = gps_data.data()
+            current = interfaces.nav_board.location()
+
+            # Rover has obstacle avoidance here, not necessary for drone
+
+            if (algorithms.gps_navigate.get_approach_status() != core.ApproachState.APPROACHING):
+                # If no longer approaching waypoint coordinates because they have been reached
+                
+                # Check for any other waypoints - if there is one, set it as the new waypoint and repeat
+                if not core.waypoint_handler.is_empty(): 
+                    # Goes back to Navigating
+                    return self.on_event(core.AutonomyEvent.NEW_COORDS)
+                else: # If no waypoint, go to next state
+                    # Stop any horizontal movement, stay at same altitude
+                    interfaces.drive_board.stop() # Make sure drone doesn't crash
+
+                    # Set goal and start to current location to reset (?)
+                    core.waypoint_handler.set_goal(interfaces.nav_board.location())
+                    core.waypoint_handler.set_start(interfaces.nav_board.location()) 
+
+                    if leg_type == "POSITION": # If was navigating towards a location marker
+                        # Activate light or anything else needed when gate completed
+                        return self.on_event(core.AutonomyEvents.REACHED_MARKER)
+                        # Currently state machine goes to Grounded, may not need to land after getting to location marker
+                    else: # If navigating towards marker/gate coordinates
+                        return self.on_event(core.AutonomyEvent.REACHED_GPS_COORDINATE)
+                        # If coordinate of marker/gate is reached, enter Search Pattern
+
+            left, right = algorithms.gps_navigate.calculate_move()
+            interfaces.drive_board.send_drive(left, right)
+            # If still approaching destination, continue moving at max speed
+
         return self
+        """
