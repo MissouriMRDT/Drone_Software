@@ -84,7 +84,7 @@ class SearchPattern(DroneState):
         """
         if altitude != desired_altitude:
             # Change the power of whatever keeps the drone in the air until altitude is correct
-            # Maybe use accelerometer to see how quickly drone is changing speed, adjust accordingly to stay within reasonable speed
+            # Maybe use accelerometer to see how quickly drone is changing speed, adjust speed accordingly
 
         else: # If at correct altitude
             gps_data = core.waypoint_handler.get_waypoint()
@@ -92,11 +92,11 @@ class SearchPattern(DroneState):
             current = interfaces.nav_board.location()
 
             # Check to see if gate or marker detected
-            # If so, immediately stop all movement to ensure we don't lose sight of the AR tag(s) 
+            # If so, immediately stop all movement to ensure we don't lose sight of the AR tag(s)
             if core.vision.ar_tag_detector.is_gate() and leg_type == "GATE":
                 # Stop any horizontal movement, stay at same altitude
                 interfaces.drive_board.stop() # Make sure drone doesn't crash
-            
+
                 # Sleep for a brief second
                 await asyncio.sleep(0.1)
 
@@ -106,7 +106,7 @@ class SearchPattern(DroneState):
             elif core.vision.ar_tag_detector.is_marker() and leg_type == "MARKER":
                 # Stop any horizontal movement, stay at same altitude
                 interfaces.drive_board.stop() # Make sure drone doesn't crash
-            
+
                 # Sleep for a brief second
                 await asyncio.sleep(0.1)
 
@@ -116,7 +116,7 @@ class SearchPattern(DroneState):
             if algorithms.gps_navigate.get_approach_status(goal, current, start) != core.ApproachState.APPROACHING:
                 # If approach status changed, if no longer approaching due to proximity
                 # If next point in search pattern has been reached
-            
+
                 # Stop any horizontal movement, stay at same altitude
                 interfaces.drive_board.stop() # Make sure drone doesn't crash
                 # Sleep for a brief second before moving to the next point, allows for AR Tag to be picked up if present
@@ -133,4 +133,3 @@ class SearchPattern(DroneState):
         return self
         # Stay in search pattern until search fails or gate/marker seen
         """
-        

@@ -80,8 +80,8 @@ class ApproachingMarker(DroneState):
         """
         if altitude != desired_altitude:
             # Change the power of whatever keeps the drone in the air until altitude is correct
-            # Maybe use accelerometer to see how quickly drone is changing speed, adjust accordingly to stay within reasonable speed
-            
+            # Maybe use accelerometer to see how quickly drone is changing speed, adjust speed accordingly
+
         else: # If at correct altitude
         # Most of the Rover code would likely work, may need to modify driving toward the marker
             if core.vision.ar_tag_detector.is_marker():

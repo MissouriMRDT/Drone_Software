@@ -55,7 +55,7 @@ class Navigating(DroneState):
         elif event == core.AutonomyEvents.REACHED_GPS_COORDINATE:
             state = core.states.SearchPattern()
 
-        #elif event == core.AutonomyEvents.NEW_WAYPOINT:
+        # elif event == core.AutonomyEvents.NEW_WAYPOINT:
         #    state = self
         elif event == core.AutonomyEvents.NEW_COORDS:
             state = self
@@ -86,19 +86,19 @@ class Navigating(DroneState):
         """
 
         """
-        # Grounded only goes to Navigating and only Grounded goes to Navigating, so it can be assumed that the drone is on the ground when navigating starts
+        # Grounded only goes to Navigating and only Grounded goes to Navigating, assume drone on ground at start of navigating
         gps_data = core.waypoint_handler.get_waypoint()
 
         # If the gps_data is none, there were no waypoint coordinates to be grabbed,
         # so log that and return
         if gps_data is None:
             return self.on_event(core.AutonomyEvents.NO_COORDS)
-            # If no waypoint coordinates to grab, go to 
+            # If no waypoint coordinates to grab, go to Grounded
 
         # Anything after the above statement is assumed to have gps data
         if altitude <= desired_altitude:
             # Change the power of whatever keeps the drone in the air until altitude is correct
-            # Maybe use accelerometer to see how quickly drone is changing speed, adjust accordingly to stay within reasonable speed
+            # Maybe use accelerometer to see how quickly drone is changing speed, adjust speed accordingly
 
         else: # If at correct altitude
             goal, start, leg_type = gps_data.data()
@@ -108,9 +108,9 @@ class Navigating(DroneState):
 
             if (algorithms.gps_navigate.get_approach_status() != core.ApproachState.APPROACHING):
                 # If no longer approaching waypoint coordinates because they have been reached
-                
+
                 # Check for any other waypoints - if there is one, set it as the new waypoint and repeat
-                if not core.waypoint_handler.is_empty(): 
+                if not core.waypoint_handler.is_empty():
                     # Goes back to Navigating
                     return self.on_event(core.AutonomyEvent.NEW_COORDS)
                 else: # If no waypoint, go to next state
@@ -119,7 +119,7 @@ class Navigating(DroneState):
 
                     # Set goal and start to current location to reset (?)
                     core.waypoint_handler.set_goal(interfaces.nav_board.location())
-                    core.waypoint_handler.set_start(interfaces.nav_board.location()) 
+                    core.waypoint_handler.set_start(interfaces.nav_board.location())
 
                     if leg_type == "POSITION": # If was navigating towards a location marker
                         # Activate light or anything else needed when gate completed

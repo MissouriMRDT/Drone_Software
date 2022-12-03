@@ -31,9 +31,9 @@ class AutonomyEvents(Enum):
     ALL_MARKERS_REACHED = 8
     ABORT = 9
     RESTART = 10
-    #NO_WAYPOINT = 11
+    # NO_WAYPOINT = 11
     NO_COORDS = 11
-    #NEW_WAYPOINT = 12
+    # NEW_WAYPOINT = 12
     NEW_COORDS = 12
 
 

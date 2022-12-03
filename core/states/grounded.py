@@ -29,7 +29,7 @@ class Grounded(DroneState):
 
         # Maybe add NEW_COORDS as event, as in state machine diagram:
         if event == core.AutonomyEvents.NEW_COORDS:
-             state = core.states.Navigating()
+            state = core.states.Navigating()
 
         elif event == core.AutonomyEvents.START:
             state = core.states.Navigating()
@@ -58,14 +58,14 @@ class Grounded(DroneState):
 
         """
         # The run function for Idle is empty - Grounded should try to land before the drone turns off
-                
+
         # Should create landing functionality similar to the below
         if altitude > 0:
             # Reduce the power of whatever keeps the drone in the air until altitude is 0
             # Maybe look for obstacles that could impair landing and move elsewhere?
             # Maybe use accelerometer to see how quickly drone is falling, adjust accordingly to stay below max speed
             # Should have max falling speed to prevent damage to drone
-        
+
         # If altitude <= 0, drone does nothing because it is not receiving commands, stay in Grounded
 
         return self
