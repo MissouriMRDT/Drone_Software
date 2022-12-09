@@ -3,7 +3,7 @@
 # constants.py
 #
 # Created on November 29, 2022
-# Updated on November 29, 2022
+# Updated on December 08, 2022
 #
 
 from enum import IntEnum, Enum
@@ -42,10 +42,10 @@ DEPTH_STEP_SIZE = 0.5  # Depth in meters that each segment of obstacle detection
 NUM_DEPTH_SEGMENTS = 3  # Number of segments of depth map to actually run contour detection on
 ZED_X_OFFSET = 0.060325
 
-Coordinate = collections.namedtuple("Coordinate", ["lat", "lon"])
+Coordinate = collections.namedtuple('Coordinate', ['lat', 'lon'])
 
 # RoveComm Numerical Values used to map events to enumerations to send over rovecomm
-rovecomm_event_list = open("core/rovecomm_values.json", "r").read()
+rovecomm_event_list = open('core/rovecomm_values.json', 'r').read()
 rovecomm_event_list = json.loads(rovecomm_event_list)
 
 # RoveComm manifest
