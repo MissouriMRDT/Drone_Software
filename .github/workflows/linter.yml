@@ -18,3 +18,4 @@ jobs:
         with:
           plugins: "flake8-bugbear flake8-warnings flake8-commas flake8-comprehensions flake8-literal flake8-multiline-containers flake8-quotes flake8-return flake8-functions flake8-pytest-style flake8-pytest dlint"
           max-line-length: "127"
+          ignore: "F401"
